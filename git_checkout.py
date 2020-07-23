@@ -85,7 +85,7 @@ for row in cursor._rows:
     os.chdir(repo_dir + str(row[1].decode("utf-8")) + "_" + str(row[0].decode("utf-8")))
     print(repo_dir + str(row[1].decode("utf-8")) + "_" + str(row[0].decode("utf-8")))
     try:
-        subprocess.check_output(["git checkout -f master"],stderr=subprocess.STDOUT,shell=True)
+        subprocess.check_output(["git checkout -f main"],stderr=subprocess.STDOUT,shell=True)
 
         lista_commit = subprocess.check_output(["git rev-list --all"],stderr=subprocess.STDOUT,shell=True)
         lista_commit = lista_commit.decode("utf-8")
@@ -205,7 +205,7 @@ for row in cursor._rows:
             cursor.execute(insert_search)
             cnx.close()
 
-        subprocess.check_output(["git checkout -f master"],stderr=subprocess.STDOUT,shell=True)
+        subprocess.check_output(["git checkout -f main"],stderr=subprocess.STDOUT,shell=True)
 
         lista_commit = subprocess.check_output(["git log --regexp-ignore-case --grep 'merge branch' --format=format:%H "],stderr=subprocess.STDOUT,shell=True)
         lista_commit = lista_commit.decode("utf-8")
